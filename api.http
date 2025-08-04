@@ -1,0 +1,28 @@
+@host=127.0.0.1:9091/api/v1
+
+### 心跳
+GET http://127.0.0.1:9091/heart
+X-Trace-ID: 123
+
+### 创建根任务
+
+POST http://{{host}}/tasks
+content-type: application/json
+
+{
+  "name": "会议提醒",
+  "expect_execute_time": "2025-07-20T12:00:00Z",
+  "background": "用户需要参加会议.",
+  "objective": "准时提醒用户参加会议.",
+  "details": "1.判断当前时间是否是用户设定时间. 2. 若是则通知用户参加会议.",
+  "dependencies": [],
+  "metadata": {
+    "owner": "User-001",
+    "owner_timezone": "Asia/Shanghai",
+    "keywords": ["User-001", "Meeting"],
+    "original_user_input": "明天晚上 8 点提醒我参加会议.",
+    "planning": "1.判断当前时间是否是用户设定时间. 2. 若是则通知用户参加会议.",
+    "description": "用户参加会议任务.",
+    "accept_criteria": "准时提醒用户参加会议."
+  }
+}
